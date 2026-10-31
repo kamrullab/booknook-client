@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BookCard, BookSummary } from "@/components/books/book-card";
 
-type Book = { _id: string; title: string; author: string; category: string; image: string; availableCopies?: number };
 const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
 
 export function NewArrivals() {
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<BookSummary[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
 
   useEffect(() => {
@@ -40,18 +40,7 @@ export function NewArrivals() {
         {status === "ready" && books.length === 0 && <div className="message-state">The shelf is ready for its first book.</div>}
         {status === "ready" && books.length > 0 && (
           <div className="books-grid">
-            {books.map((book) => (
-              <article className="book-card" key={book._id}>
-                <div className="book-cover">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={book.image} alt={`Cover of ${book.title}`} /><span>{book.category}</span>
-                </div>
-                <div className="book-card-body">
-                  <p>{book.author}</p><h3>{book.title}</h3>
-                  <div className="book-card-footer"><span>{book.availableCopies ?? 0} available</span><Link href={`/books/${book._id}`}>View details <span aria-hidden="true">→</span></Link></div>
-                </div>
-              </article>
-            ))}
+            {books.map((book) => <BookCard book={book} key={book._id} />)}
           </div>
         )}
       </div>
