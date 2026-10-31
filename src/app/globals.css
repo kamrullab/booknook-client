@@ -95,6 +95,22 @@ body {
   color: var(--brand);
 }
 
+.session-skeleton { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--line); animation: pulse 1.2s ease-in-out infinite alternate; }
+@keyframes pulse { to { opacity: .45; } }
+.profile-menu { position: relative; }
+.profile-menu > summary { display: grid; width: 2.85rem; height: 2.85rem; overflow: hidden; cursor: pointer; list-style: none; place-items: center; border: 2px solid var(--surface); border-radius: 50%; background: var(--brand); color: white; font-weight: 900; box-shadow: 0 0 0 1px var(--line); }
+.profile-menu > summary::-webkit-details-marker { display: none; }
+.profile-menu > summary img, .mobile-user img { width: 100%; height: 100%; object-fit: cover; }
+.profile-popover { position: absolute; top: calc(100% + .75rem); right: 0; display: grid; width: 16rem; padding: .65rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); box-shadow: 0 20px 50px rgb(24 51 43 / 15%); }
+.profile-identity { display: grid; gap: .2rem; margin-bottom: .45rem; padding: .65rem .75rem .85rem; border-bottom: 1px solid var(--line); }
+.profile-identity span { overflow: hidden; color: var(--muted); font-size: .75rem; text-overflow: ellipsis; }
+.profile-popover a, .profile-popover button, .mobile-menu nav button { padding: .75rem; border: 0; border-radius: .6rem; background: transparent; color: var(--foreground); cursor: pointer; text-align: left; font-weight: 750; }
+.profile-popover a:hover, .profile-popover button:hover, .mobile-menu nav button:hover { background: var(--background); color: var(--brand); }
+.mobile-user { display: flex; align-items: center; gap: .75rem; margin: .25rem 0; padding: .75rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.mobile-user > img, .mobile-user > span:first-child { display: grid; width: 2.4rem; height: 2.4rem; flex: none; place-items: center; overflow: hidden; border-radius: 50%; background: var(--brand); color: white; font-weight: 900; }
+.mobile-user > span:last-child { display: grid; min-width: 0; }
+.mobile-user small { overflow: hidden; color: var(--muted); text-overflow: ellipsis; }
+
 .button {
   display: inline-flex;
   align-items: center;
