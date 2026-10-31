@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen items-center justify-center px-6 py-16">
+    <main className="flex items-center justify-center px-6 py-16">
       <section className="w-full max-w-5xl overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] shadow-[0_24px_80px_rgba(24,51,43,0.12)]">
         <div className="grid gap-10 px-8 py-14 md:grid-cols-[1.15fr_0.85fr] md:px-14 md:py-20">
           <div>
