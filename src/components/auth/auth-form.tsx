@@ -84,7 +84,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
   }
 
   return (
-    <div className="auth-card card">
+    <div className={`auth-card card${isRegister ? " auth-card-register" : ""}`}>
       <div className="auth-heading">
         <p className="eyebrow">{isRegister ? "Join the community" : "Welcome back"}</p>
         <h1>{isRegister ? "Create your reader account" : "Return to your shelf"}</h1>
