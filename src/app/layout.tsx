@@ -6,6 +6,16 @@ import { ToastProvider } from "@/components/providers/toast-provider";
 import { auth } from "@/lib/auth";
 import "./globals.css";
 
+const themeBootstrap = `
+  try {
+    const saved = localStorage.getItem("booknook-theme");
+    const theme = saved === "light" || saved === "dark"
+      ? saved
+      : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.dataset.theme = theme;
+  } catch {}
+`;
+
 export const metadata: Metadata = {
   title: {
     default: "BookNook | A Small Online Library",
@@ -19,6 +29,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      </head>
       <body>
         <SiteHeader initialUser={session?.user} />
         <div className="page-content">{children}</div>

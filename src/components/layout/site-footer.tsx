@@ -15,15 +15,6 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h2>Explore</h2>
-          <div className="footer-links">
-            <Link href="/books">All Books</Link>
-            <Link href="/login">Log in</Link>
-            <Link href="/register">Create account</Link>
-          </div>
-        </div>
-
-        <div>
           <h2>Contact</h2>
           <address className="footer-links">
             <a href="mailto:hello@booknook.example">hello@booknook.example</a>
@@ -43,7 +34,6 @@ export function SiteFooter() {
       </div>
       <div className="site-container footer-bottom">
         <p>© {new Date().getFullYear()} BookNook. Made for readers, by readers.</p>
-        <p>Add a book. Borrow a book. Return a book.</p>
       </div>
     </footer>
   );
