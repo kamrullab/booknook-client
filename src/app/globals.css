@@ -305,15 +305,15 @@ body {
 }
 
 .hero-shell { background: var(--forest); }
-.hero-slide { position: relative; display: flex; min-height: 42rem; align-items: center; overflow: hidden; color: white; }
+.hero-slide { position: relative; display: flex; min-height: min(42rem, calc(100svh - 5rem)); align-items: center; overflow: hidden; color: white; }
 .hero-slide::after { position: absolute; inset: 0; content: ""; background: radial-gradient(circle at 78% 32%, rgb(230 153 101 / 30%), transparent 24%), linear-gradient(90deg, rgb(16 43 35 / 96%) 15%, rgb(16 43 35 / 72%) 62%, rgb(16 43 35 / 88%)); }
 .hero-slide-one { background: linear-gradient(135deg, #173f33, #8a4a2d); }
 .hero-slide-two { background: linear-gradient(135deg, #203c4c, #966d3f); }
 .hero-slide-three { background: linear-gradient(135deg, #4d3029, #2e5547); }
-.hero-content { position: relative; z-index: 2; padding-block: 7rem 9rem; }
-.hero-content > p, .eyebrow { margin: 0 0 1rem; color: #c8663d; font-size: .78rem; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
-.hero-content h1 { max-width: 760px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.3rem, 7vw, 6.8rem); line-height: .95; letter-spacing: -.055em; }
-.hero-content > span { display: block; max-width: 590px; margin-top: 1.7rem; color: #dce7e1; font-size: 1.15rem; line-height: 1.75; }
+.booknook-hero-content { position: relative; z-index: 2; display: block; padding-block: clamp(4rem, 10vh, 7rem) clamp(5rem, 12vh, 9rem); }
+.booknook-hero-content > p, .eyebrow { margin: 0 0 1rem; color: #c8663d; font-size: .78rem; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
+.booknook-hero-content h1 { max-width: 760px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 6vw, 6.2rem); line-height: .95; letter-spacing: -.055em; }
+.booknook-hero-content > span { display: block; max-width: 590px; margin-top: 1.5rem; color: #dce7e1; font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.65; }
 .hero-button { margin-top: 2.2rem; min-height: 3.3rem; padding-inline: 1.7rem; }
 .hero-shell .swiper-pagination { bottom: 2.5rem !important; }
 .hero-shell .swiper-pagination-bullet { width: 2rem; height: 3px; border-radius: 2px; background: white; }
@@ -353,7 +353,8 @@ body {
 .promise-card > div:last-child p { color: #c3d2ca; line-height: 1.8; }
 .promise-button { margin-top: 1.3rem; min-height: 3.2rem; padding-inline: 1.5rem; }
 @media (max-width: 850px) { .books-grid, .steps-grid { grid-template-columns: repeat(2, 1fr); } .promise-card { grid-template-columns: 1fr; gap: 2rem; } }
-@media (max-width: 600px) { .hero-slide { min-height: 36rem; } .home-section { padding-block: 5rem; } .heading-row { align-items: start; flex-direction: column; } .books-grid, .steps-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .hero-slide { min-height: min(36rem, calc(100svh - 5rem)); } .booknook-hero-content { padding-block: 3.5rem 5rem; } .home-section { padding-block: 5rem; } .heading-row { align-items: start; flex-direction: column; } .books-grid, .steps-grid { grid-template-columns: 1fr; } }
+@media (max-height: 700px) and (min-width: 601px) { .booknook-hero-content { padding-block: 3rem 4rem; } .booknook-hero-content h1 { font-size: clamp(3rem, 9vh, 5rem); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
 .auth-page { display: grid; min-height: calc(100vh - 5rem); place-items: center; padding: 5rem 1rem; background: radial-gradient(circle at 15% 15%, #efd7c4, transparent 26%), radial-gradient(circle at 85% 80%, #cfddd4, transparent 28%), var(--background); }

@@ -19,7 +19,7 @@ export function HomeHero() {
         {slides.map(([kicker, title, text, className]) => (
           <SwiperSlide key={title}>
             <div className={`hero-slide ${className}`}>
-              <div className="site-container hero-content">
+              <div className="site-container booknook-hero-content">
                 <p>{kicker}</p><h1>{title}</h1><span>{text}</span>
                 <Link className="button hero-button" href="/books">Browse books</Link>
               </div>
