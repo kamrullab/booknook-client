@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useSyncExternalStore } from "react";
 import { toast } from "sonner";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -44,8 +45,10 @@ type HeaderUser = {
 
 export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
   const router = useRouter();
+  const mounted = useSyncExternalStore(() => () => undefined, () => true, () => false);
   const { data: session, isPending } = useSession();
-  const user = session?.user ?? (isPending ? initialUser : undefined);
+  const accountPending = !mounted || isPending;
+  const user = session?.user ?? (accountPending ? initialUser : undefined);
   const links = user ? [...publicLinks, ...privateLinks] : publicLinks;
 
   async function handleLogout() {
@@ -69,8 +72,8 @@ export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
 
         <div className="desktop-actions">
           <ThemeToggle />
-          {isPending && !user ? (
-            <span className="session-skeleton" aria-label="Loading account" />
+          {accountPending && !user ? (
+            <span className="session-placeholder" aria-label="Loading account" />
           ) : user ? (
             <details className="profile-menu">
               <summary aria-label={`Open account menu for ${user.name}`}>
@@ -94,8 +97,8 @@ export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
             {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
             {user ? (
               <><div className="mobile-user"><UserAvatar image={user.image} name={user.name} /><span><strong>{user.name}</strong><small>{user.email}</small></span></div><Link href="/profile">My Profile</Link><button type="button" onClick={handleLogout}>Log out</button></>
-            ) : isPending ? (
-              <span className="session-skeleton" aria-label="Loading account" />
+            ) : accountPending ? (
+              <span className="session-placeholder" aria-label="Loading account" />
             ) : (
               <><Link href="/login">Log in</Link><Link className="button button-small" href="/register">Join BookNook</Link></>
             )}
