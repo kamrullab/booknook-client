@@ -312,10 +312,10 @@ body {
 
 .hero-shell { background: var(--forest); }
 .hero-slide { position: relative; display: flex; min-height: min(42rem, calc(100svh - 5rem)); align-items: center; overflow: hidden; color: white; }
-.hero-slide::after { position: absolute; inset: 0; content: ""; background: radial-gradient(circle at 78% 32%, rgb(230 153 101 / 30%), transparent 24%), linear-gradient(90deg, rgb(16 43 35 / 96%) 15%, rgb(16 43 35 / 72%) 62%, rgb(16 43 35 / 88%)); }
-.hero-slide-one { background: linear-gradient(135deg, #173f33, #8a4a2d); }
-.hero-slide-two { background: linear-gradient(135deg, #203c4c, #966d3f); }
-.hero-slide-three { background: linear-gradient(135deg, #4d3029, #2e5547); }
+.hero-slide::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, rgb(8 27 22 / 96%) 0%, rgb(8 27 22 / 88%) 38%, rgb(8 27 22 / 48%) 68%, rgb(8 27 22 / 20%) 100%); }
+.hero-slide-one { background: #10251f url("/images/hero-reading-room.png") center / cover no-repeat; }
+.hero-slide-two { background: #112a38 url("/images/hero-discovery.png") center / cover no-repeat; }
+.hero-slide-three { background: #321f1b url("/images/hero-community.png") center / cover no-repeat; }
 .booknook-hero-content { position: relative; z-index: 2; display: block; padding-block: clamp(4rem, 10vh, 7rem) clamp(5rem, 12vh, 9rem); }
 .booknook-hero-content > p, .eyebrow { margin: 0 0 1rem; color: #c8663d; font-size: .78rem; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
 .booknook-hero-content h1 { max-width: 760px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 6vw, 6.2rem); line-height: .95; letter-spacing: -.055em; }
@@ -361,7 +361,7 @@ body {
 .promise-button { margin-top: 1.3rem; min-height: 3.2rem; padding-inline: 1.5rem; }
 @media (max-width: 1180px) { .books-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 850px) { .books-grid, .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .promise-card { grid-template-columns: 1fr; gap: 2rem; } }
-@media (max-width: 600px) { .hero-slide { min-height: min(36rem, calc(100svh - 5rem)); } .booknook-hero-content { padding-block: 3.5rem 5rem; } .home-section { padding-block: 5rem; } .heading-row { align-items: start; flex-direction: column; } .books-grid, .steps-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .hero-slide { min-height: min(36rem, calc(100svh - 5rem)); background-position: 62% center; } .hero-slide::after { background: linear-gradient(90deg, rgb(8 27 22 / 96%) 0%, rgb(8 27 22 / 82%) 68%, rgb(8 27 22 / 50%) 100%); } .booknook-hero-content { padding-block: 3.5rem 5rem; } .home-section { padding-block: 5rem; } .heading-row { align-items: start; flex-direction: column; } .books-grid, .steps-grid { grid-template-columns: 1fr; } }
 @media (max-height: 700px) and (min-width: 601px) { .booknook-hero-content { padding-block: 3rem 4rem; } .booknook-hero-content h1 { font-size: clamp(3rem, 9vh, 5rem); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
