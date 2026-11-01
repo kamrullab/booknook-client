@@ -2,7 +2,7 @@
 
 BookNook is a responsive community library where readers can discover recent books, contribute titles, borrow available copies, and return them after reading.
 
-**Live website:** Add the Vercel production URL here after deployment.
+**Live website:** https://booknookbd.vercel.app
 
 ## Website features
 
