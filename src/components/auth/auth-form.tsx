@@ -84,7 +84,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
   }
 
   return (
-    <div className="auth-card">
+    <div className="auth-card card">
       <div className="auth-heading">
         <p className="eyebrow">{isRegister ? "Join the community" : "Welcome back"}</p>
         <h1>{isRegister ? "Create your reader account" : "Return to your shelf"}</h1>
@@ -95,24 +95,24 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
         {isRegister && (
           <>
             <label htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" autoComplete="name" minLength={2} required />
+            <input className="input" id="name" name="name" type="text" autoComplete="name" minLength={2} required />
             <label htmlFor="image">Photo URL</label>
-            <input id="image" name="image" type="url" autoComplete="url" placeholder="https://example.com/photo.jpg" required />
+            <input className="input" id="image" name="image" type="url" autoComplete="url" placeholder="https://example.com/photo.jpg" required />
           </>
         )}
         <label htmlFor="email">Email address</label>
-        <input id="email" name="email" type="email" autoComplete="email" required />
+        <input className="input" id="email" name="email" type="email" autoComplete="email" required />
         <div className="password-label"><label htmlFor="password">Password</label>{!isRegister && <span>Forgot password is disabled</span>}</div>
-        <input id="password" name="password" type="password" autoComplete={isRegister ? "new-password" : "current-password"} minLength={6} required />
+        <input className="input" id="password" name="password" type="password" autoComplete={isRegister ? "new-password" : "current-password"} minLength={6} required />
         {isRegister && <p className="password-hint">Use at least 6 characters with uppercase and lowercase letters.</p>}
         {fieldError && <p className="form-error" role="alert">{fieldError}</p>}
-        <button className="button auth-submit" type="submit" disabled={submitting}>
+        <button className="button btn auth-submit" type="submit" disabled={submitting}>
           {submitting ? "Please wait…" : isRegister ? "Create account" : "Log in"}
         </button>
       </form>
 
       <div className="auth-divider"><span>or continue with</span></div>
-      <button className="google-button" type="button" onClick={handleGoogleLogin} disabled={submitting}>
+      <button className="google-button btn" type="button" onClick={handleGoogleLogin} disabled={submitting}>
         <span aria-hidden="true">G</span> Google
       </button>
       <p className="auth-switch">

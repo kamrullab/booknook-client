@@ -11,7 +11,7 @@ export type BookSummary = {
 
 export function BookCard({ book }: { book: BookSummary }) {
   return (
-    <article className="book-card">
+    <article className="book-card card">
       <div className="book-cover">
         {/* Covers use the assignment-approved external image provider. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -23,7 +23,7 @@ export function BookCard({ book }: { book: BookSummary }) {
         <h3>{book.title}</h3>
         <div className="book-card-footer">
           <span>{book.availableCopies ?? 0} available</span>
-          <Link href={`/books/${book._id}`}>View details <span aria-hidden="true">→</span></Link>
+          <Link className="link link-hover" href={`/books/${book._id}`}>View details <span aria-hidden="true">→</span></Link>
         </div>
       </div>
     </article>

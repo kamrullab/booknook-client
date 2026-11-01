@@ -22,7 +22,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`} title={`Switch to ${theme === "light" ? "dark" : "light"} theme`}>
+    <button className="theme-toggle btn btn-circle btn-ghost" type="button" onClick={toggleTheme} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`} title={`Switch to ${theme === "light" ? "dark" : "light"} theme`}>
       <span aria-hidden="true">{theme === "light" ? "☾" : "☀"}</span>
     </button>
   );

@@ -24,7 +24,7 @@ BookNook is a responsive community library where readers can discover recent boo
 - Next.js 16 App Router and TypeScript
 - Better Auth with the official MongoDB adapter
 - Better Auth JWT/JWKS plugin for Express authorization
-- Tailwind CSS, custom responsive CSS, Swiper, and Sonner
+- Tailwind CSS, DaisyUI, custom responsive CSS, Swiper, and Sonner
 - MongoDB Atlas, imgbb, Vercel, and Render
 
 ## Local setup

@@ -59,16 +59,16 @@ export function AddBookForm() {
   return (
     <form className="book-form" onSubmit={handleSubmit}>
       <div className="form-grid">
-        <div className="field-group"><label htmlFor="title">Book title</label><input id="title" name="title" minLength={2} maxLength={150} required /></div>
-        <div className="field-group"><label htmlFor="author">Author name</label><input id="author" name="author" minLength={2} maxLength={100} required /></div>
-        <div className="field-group"><label htmlFor="category">Category</label><select id="category" name="category" defaultValue="" required><option value="" disabled>Select a category</option>{categories.map((category) => <option key={category}>{category}</option>)}</select></div>
-        <div className="field-group"><label htmlFor="totalCopies">Total copies</label><input id="totalCopies" name="totalCopies" type="number" min={1} max={1000} defaultValue={1} required /></div>
+        <div className="field-group"><label htmlFor="title">Book title</label><input className="input" id="title" name="title" minLength={2} maxLength={150} required /></div>
+        <div className="field-group"><label htmlFor="author">Author name</label><input className="input" id="author" name="author" minLength={2} maxLength={100} required /></div>
+        <div className="field-group"><label htmlFor="category">Category</label><select className="select" id="category" name="category" defaultValue="" required><option value="" disabled>Select a category</option>{categories.map((category) => <option key={category}>{category}</option>)}</select></div>
+        <div className="field-group"><label htmlFor="totalCopies">Total copies</label><input className="input" id="totalCopies" name="totalCopies" type="number" min={1} max={1000} defaultValue={1} required /></div>
         <div className="field-group full-field"><label htmlFor="image">Book cover</label><label className="file-input" htmlFor="image"><span>Choose image</span><small>{imageName}</small></label><input className="hidden-file" id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp" required onChange={(event) => setImageName(event.target.files?.[0]?.name ?? "No cover selected")} /><p className="field-help">JPG, PNG, or WebP. Maximum 5 MB.</p></div>
-        <div className="field-group full-field"><label htmlFor="description">Short description</label><textarea id="description" name="description" minLength={20} maxLength={2000} rows={6} required /></div>
-        <div className="field-group"><label htmlFor="userName">Added by</label><input id="userName" value={session?.user.name ?? "Loading…"} readOnly /></div>
-        <div className="field-group"><label htmlFor="userEmail">Email</label><input id="userEmail" value={session?.user.email ?? "Loading…"} readOnly /></div>
+        <div className="field-group full-field"><label htmlFor="description">Short description</label><textarea className="textarea" id="description" name="description" minLength={20} maxLength={2000} rows={6} required /></div>
+        <div className="field-group"><label htmlFor="userName">Added by</label><input className="input" id="userName" value={session?.user.name ?? "Loading…"} readOnly /></div>
+        <div className="field-group"><label htmlFor="userEmail">Email</label><input className="input" id="userEmail" value={session?.user.email ?? "Loading…"} readOnly /></div>
       </div>
-      <button className="button form-submit" type="submit" disabled={submitting || !session}>{submitting ? "Uploading and saving…" : "Add Book"}</button>
+      <button className="button btn form-submit" type="submit" disabled={submitting || !session}>{submitting ? "Uploading and saving…" : "Add Book"}</button>
     </form>
   );
 }
