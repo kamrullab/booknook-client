@@ -36,10 +36,16 @@ function UserAvatar({ image, name }: { image?: string | null; name: string }) {
   return <span aria-hidden="true">{name.charAt(0).toUpperCase()}</span>;
 }
 
-export function SiteHeader() {
+type HeaderUser = {
+  name: string;
+  email: string;
+  image?: string | null;
+};
+
+export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
   const router = useRouter();
   const { data: session, isPending } = useSession();
-  const user = session?.user;
+  const user = session?.user ?? (isPending ? initialUser : undefined);
   const links = user ? [...publicLinks, ...privateLinks] : publicLinks;
 
   async function handleLogout() {
@@ -63,7 +69,7 @@ export function SiteHeader() {
 
         <div className="desktop-actions">
           <ThemeToggle />
-          {isPending ? (
+          {isPending && !user ? (
             <span className="session-skeleton" aria-label="Loading account" />
           ) : user ? (
             <details className="profile-menu">
@@ -88,6 +94,8 @@ export function SiteHeader() {
             {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
             {user ? (
               <><div className="mobile-user"><UserAvatar image={user.image} name={user.name} /><span><strong>{user.name}</strong><small>{user.email}</small></span></div><Link href="/profile">My Profile</Link><button type="button" onClick={handleLogout}>Log out</button></>
+            ) : isPending ? (
+              <span className="session-skeleton" aria-label="Loading account" />
             ) : (
               <><Link href="/login">Log in</Link><Link className="button button-small" href="/register">Join BookNook</Link></>
             )}
