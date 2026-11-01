@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { signOut, useSession } from "@/lib/auth-client";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 const publicLinks = [
   { href: "/", label: "Home" },
@@ -61,6 +62,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="desktop-actions">
+          <ThemeToggle />
           {isPending ? (
             <span className="session-skeleton" aria-label="Loading account" />
           ) : user ? (
@@ -82,6 +84,7 @@ export function SiteHeader() {
         <details className="mobile-menu">
           <summary aria-label="Open navigation menu"><span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" /></summary>
           <nav aria-label="Mobile navigation">
+            <div className="mobile-theme"><span>Appearance</span><ThemeToggle /></div>
             {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
             {user ? (
               <><div className="mobile-user"><UserAvatar image={user.image} name={user.name} /><span><strong>{user.name}</strong><small>{user.email}</small></span></div><Link href="/profile">My Profile</Link><button type="button" onClick={handleLogout}>Log out</button></>
