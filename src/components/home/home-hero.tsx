@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 
 const slides = [
   ["Stories worth sharing", "Find the book that stays with you.", "Browse a growing community shelf and borrow your next unforgettable read.", "hero-slide-one"],
-  ["New worlds, close by", "Curiosity belongs on every shelf.", "Move from science to history, fiction to childhood favorites—all in one welcoming nook.", "hero-slide-two"],
+  ["New worlds, close by", "Curiosity belongs on every shelf.", "Move from science to history, fiction to childhood favorites, all in one welcoming nook.", "hero-slide-two"],
   ["A library built together", "Share a favorite. Start a journey.", "Add books you love and help another reader find exactly the story they needed.", "hero-slide-three"],
 ];
 
