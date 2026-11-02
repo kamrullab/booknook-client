@@ -17,11 +17,36 @@ const themeBootstrap = `
 `;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.BETTER_AUTH_URL ?? "https://booknookbd.vercel.app"),
   title: {
     default: "BookNook | A Small Online Library",
     template: "BookNook | %s",
   },
   description: "Discover, share, and borrow books with the BookNook community.",
+  applicationName: "BookNook",
+  keywords: ["BookNook", "online library", "borrow books", "share books", "community library", "book catalog"],
+  authors: [{ name: "BookNook" }],
+  creator: "BookNook",
+  publisher: "BookNook",
+  category: "education",
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: "BookNook",
+    title: "BookNook | A Small Online Library",
+    description: "Discover community-shared books, borrow your next read, and contribute favorites to the BookNook shelf.",
+    images: [{ url: "/images/booknook-og.png", width: 1736, height: 909, alt: "Two BookNook readers discovering a book together in a welcoming library" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BookNook | A Small Online Library",
+    description: "Add a book, borrow a book, and return a book with the BookNook community.",
+    images: ["/images/booknook-og.png"],
+  },
+  icons: { icon: "/icon.svg", shortcut: "/icon.svg", apple: "/icon.svg" },
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
