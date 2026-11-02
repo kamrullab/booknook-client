@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { toast } from "sonner";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -45,11 +45,37 @@ type HeaderUser = {
 
 export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
   const router = useRouter();
+  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mounted = useSyncExternalStore(() => () => undefined, () => true, () => false);
   const { data: session, isPending } = useSession();
   const accountPending = !mounted || isPending;
   const user = session?.user ?? (accountPending ? initialUser : undefined);
   const links = user ? [...publicLinks, ...privateLinks] : publicLinks;
+
+  function closeMobileMenu() {
+    if (mobileMenuRef.current) mobileMenuRef.current.open = false;
+    setMobileMenuOpen(false);
+  }
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      if (!mobileMenuRef.current?.contains(event.target as Node)) closeMobileMenu();
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") closeMobileMenu();
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   async function handleLogout() {
     const result = await signOut();
@@ -90,17 +116,17 @@ export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
           )}
         </div>
 
-        <details className="mobile-menu">
-          <summary aria-label="Open navigation menu"><span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" /></summary>
+        <details ref={mobileMenuRef} className="mobile-menu" onToggle={(event) => setMobileMenuOpen(event.currentTarget.open)}>
+          <summary aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen}><span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" /></summary>
           <nav aria-label="Mobile navigation">
             <div className="mobile-theme"><span>Appearance</span><ThemeToggle /></div>
-            {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+            {links.map((link) => <Link key={link.href} href={link.href} onClick={closeMobileMenu}>{link.label}</Link>)}
             {user ? (
-              <><div className="mobile-user"><UserAvatar image={user.image} name={user.name} /><span><strong>{user.name}</strong><small>{user.email}</small></span></div><Link href="/profile">My Profile</Link><button type="button" onClick={handleLogout}>Log out</button></>
+              <><div className="mobile-user"><UserAvatar image={user.image} name={user.name} /><span><strong>{user.name}</strong><small>{user.email}</small></span></div><Link href="/profile" onClick={closeMobileMenu}>My Profile</Link><button type="button" onClick={handleLogout}>Log out</button></>
             ) : accountPending ? (
               <span className="session-placeholder" aria-label="Loading account" />
             ) : (
-              <><Link href="/login">Log in</Link><Link className="button button-small" href="/register">Join BookNook</Link></>
+              <><Link href="/login" onClick={closeMobileMenu}>Log in</Link><Link className="button button-small" href="/register" onClick={closeMobileMenu}>Join BookNook</Link></>
             )}
           </nav>
         </details>
