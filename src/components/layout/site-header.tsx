@@ -142,20 +142,22 @@ export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
           )}
         </div>
 
-        <details ref={mobileMenuRef} className="mobile-menu" onToggle={(event) => setMobileMenuOpen(event.currentTarget.open)}>
-          <summary aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen}><span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" /></summary>
-          <nav aria-label="Mobile navigation">
-            <div className="mobile-theme"><ThemeToggle /></div>
-            {links.map((link) => <Link key={link.href} href={link.href} onClick={closeMobileMenu}>{link.label}</Link>)}
-            {user ? (
-              <><div className="mobile-user"><UserAvatar image={user.image} name={user.name} /><span><strong>{user.name}</strong><small>{user.email}</small></span></div><Link href="/profile" onClick={closeMobileMenu}>My Profile</Link><button type="button" onClick={handleLogout}>Log out</button></>
-            ) : accountPending ? (
-              <span className="session-placeholder" aria-label="Loading account" />
-            ) : (
-              <><Link href="/login" onClick={closeMobileMenu}>Log in</Link><Link className="button button-small" href="/register" onClick={closeMobileMenu}>Join BookNook</Link></>
-            )}
-          </nav>
-        </details>
+        <div className="mobile-actions">
+          <ThemeToggle />
+          <details ref={mobileMenuRef} className="mobile-menu" onToggle={(event) => setMobileMenuOpen(event.currentTarget.open)}>
+            <summary aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen}><span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" /></summary>
+            <nav aria-label="Mobile navigation">
+              {links.map((link) => <Link key={link.href} href={link.href} onClick={closeMobileMenu}>{link.label}</Link>)}
+              {user ? (
+                <><div className="mobile-user"><UserAvatar image={user.image} name={user.name} /><span><strong>{user.name}</strong><small>{user.email}</small></span></div><Link href="/profile" onClick={closeMobileMenu}>My Profile</Link><button type="button" onClick={handleLogout}>Log out</button></>
+              ) : accountPending ? (
+                <span className="session-placeholder" aria-label="Loading account" />
+              ) : (
+                <><Link href="/login" onClick={closeMobileMenu}>Log in</Link><Link className="button button-small" href="/register" onClick={closeMobileMenu}>Join BookNook</Link></>
+              )}
+            </nav>
+          </details>
+        </div>
       </div>
     </header>
   );
