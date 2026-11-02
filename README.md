@@ -37,6 +37,10 @@ The interface includes custom light and dark themes, responsive layouts for phon
 - **Images:** Protected imgbb upload route
 - **Deployment:** Vercel frontend and Render API
 
+## UI library choice
+
+This project uses **DaisyUI** as the required component library, together with Tailwind CSS and custom responsive CSS. HeroUI and Shadcn UI are not used.
+
 ## Application routes
 
 ### Public and guest routes
