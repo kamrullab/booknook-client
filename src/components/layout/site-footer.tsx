@@ -17,9 +17,9 @@ export function SiteFooter() {
         <div>
           <h2>Contact</h2>
           <address className="footer-links">
-            <a href="mailto:hello@booknook.example">hello@booknook.example</a>
-            <a href="tel:+8801700000000">+880 1700-000000</a>
-            <span>Dhaka, Bangladesh</span>
+            <a href="mailto:hello@booknookbd.com">hello@booknookbd.com</a>
+            <a href="tel:+8801700123456">+880 1700-123456</a>
+            <span>Dhanmondi, Dhaka, Bangladesh</span>
           </address>
         </div>
 
