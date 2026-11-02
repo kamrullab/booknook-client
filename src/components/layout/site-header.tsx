@@ -46,7 +46,9 @@ type HeaderUser = {
 export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
   const router = useRouter();
   const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+  const profileMenuRef = useRef<HTMLDetailsElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const mounted = useSyncExternalStore(() => () => undefined, () => true, () => false);
   const { data: session, isPending } = useSession();
   const accountPending = !mounted || isPending;
@@ -56,6 +58,11 @@ export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
   function closeMobileMenu() {
     if (mobileMenuRef.current) mobileMenuRef.current.open = false;
     setMobileMenuOpen(false);
+  }
+
+  function closeProfileMenu() {
+    if (profileMenuRef.current) profileMenuRef.current.open = false;
+    setProfileMenuOpen(false);
   }
 
   useEffect(() => {
@@ -76,6 +83,25 @@ export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!profileMenuOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      if (!profileMenuRef.current?.contains(event.target as Node)) closeProfileMenu();
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") closeProfileMenu();
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [profileMenuOpen]);
 
   async function handleLogout() {
     const result = await signOut();
@@ -101,13 +127,13 @@ export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
           {accountPending && !user ? (
             <span className="session-placeholder" aria-label="Loading account" />
           ) : user ? (
-            <details className="profile-menu">
-              <summary aria-label={`Open account menu for ${user.name}`}>
+            <details ref={profileMenuRef} className="profile-menu" onToggle={(event) => setProfileMenuOpen(event.currentTarget.open)}>
+              <summary aria-label={profileMenuOpen ? "Close account menu" : `Open account menu for ${user.name}`} aria-expanded={profileMenuOpen}>
                 <UserAvatar image={user.image} name={user.name} />
               </summary>
               <div className="profile-popover">
                 <div className="profile-identity"><strong>{user.name}</strong><span>{user.email}</span></div>
-                <Link href="/profile">My Profile</Link>
+                <Link href="/profile" onClick={closeProfileMenu}>My Profile</Link>
                 <button type="button" onClick={handleLogout}>Log out</button>
               </div>
             </details>
