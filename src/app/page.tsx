@@ -3,7 +3,7 @@ import Link from "next/link";
 import { HomeHero } from "@/components/home/home-hero";
 import { NewArrivals } from "@/components/home/new-arrivals";
 
-export const metadata: Metadata = { title: "Home" };
+export const metadata: Metadata = { title: { absolute: "BookNook | A Small Online Library" } };
 
 const steps = [
   ["01", "Find your next read", "Explore community-added books across fiction, science, history, and more."],
