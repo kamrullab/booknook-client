@@ -145,7 +145,7 @@ export function SiteHeader({ initialUser }: { initialUser?: HeaderUser }) {
         <details ref={mobileMenuRef} className="mobile-menu" onToggle={(event) => setMobileMenuOpen(event.currentTarget.open)}>
           <summary aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen}><span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" /></summary>
           <nav aria-label="Mobile navigation">
-            <div className="mobile-theme"><span>Appearance</span><ThemeToggle /></div>
+            <div className="mobile-theme"><ThemeToggle /></div>
             {links.map((link) => <Link key={link.href} href={link.href} onClick={closeMobileMenu}>{link.label}</Link>)}
             {user ? (
               <><div className="mobile-user"><UserAvatar image={user.image} name={user.name} /><span><strong>{user.name}</strong><small>{user.email}</small></span></div><Link href="/profile" onClick={closeMobileMenu}>My Profile</Link><button type="button" onClick={handleLogout}>Log out</button></>

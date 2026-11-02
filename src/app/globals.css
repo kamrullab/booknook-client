@@ -117,7 +117,7 @@ img { max-width: 100%; }
   color: var(--brand);
 }
 
-.theme-toggle{display:grid;width:2.65rem;height:2.65rem;place-items:center;cursor:pointer;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--foreground);font-size:1.15rem}.theme-toggle:hover{border-color:var(--brand);color:var(--brand)}.mobile-theme{display:flex;align-items:center;justify-content:space-between;padding:.5rem .75rem;color:var(--muted);font-size:.8rem;font-weight:800}
+.theme-toggle{display:grid;width:2.65rem;height:2.65rem;place-items:center;cursor:pointer;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--foreground);font-size:1.15rem}.theme-toggle:hover{border-color:var(--brand);color:var(--brand)}.mobile-theme{display:flex;align-items:center;justify-content:flex-end;padding:.35rem .5rem}
 
 [data-theme="dark"] .site-header{background:rgb(16 25 22 / 92%)}[data-theme="dark"] .process-section,[data-theme="dark"] .form-page{background:#121e1a}[data-theme="dark"] .book-cover,[data-theme="dark"] .details-cover{background:#26342e}[data-theme="dark"] .step-card,[data-theme="dark"] .auth-card,[data-theme="dark"] .book-form,[data-theme="dark"] .borrow-table-wrap{box-shadow:none}[data-theme="dark"] .auth-card input,[data-theme="dark"] .field-group input,[data-theme="dark"] .field-group select,[data-theme="dark"] .field-group textarea,[data-theme="dark"] .google-button{background:#111b18;color:var(--foreground)}[data-theme="dark"] .field-group input[readonly],[data-theme="dark"] .added-by,[data-theme="dark"] .borrow-user,[data-theme="dark"] .file-input{background:#202d28}[data-theme="dark"] .profile-details{background:var(--line)}[data-theme="dark"] .form-error{background:#4c2420;color:#ffc0b5}
 
