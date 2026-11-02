@@ -14,7 +14,7 @@ export function NewArrivals() {
     const controller = new AbortController();
     async function loadBooks() {
       try {
-        const response = await fetch(`${apiUrl}/books?limit=6`, { signal: controller.signal });
+        const response = await fetch(`${apiUrl}/books?limit=8`, { signal: controller.signal });
         if (!response.ok) throw new Error("Unable to load new arrivals");
         const payload = await response.json();
         setBooks(payload.data ?? []);
