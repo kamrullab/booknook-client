@@ -29,29 +29,30 @@ The interface includes custom light and dark themes, responsive layouts for phon
 
 ## Technology stack
 
-| Area | Technology |
-| --- | --- |
-| Framework | Next.js 16 App Router, React, TypeScript |
-| Authentication | Better Auth, Google OAuth, JWT/JWKS |
-| Database | MongoDB Atlas through the Better Auth MongoDB adapter |
-| Interface | Tailwind CSS, DaisyUI, custom CSS, Swiper |
-| Feedback | Sonner toast notifications |
-| Images | Protected imgbb upload route |
-| Deployment | Vercel frontend, Render API |
+- **Framework:** Next.js 16 App Router, React, and TypeScript
+- **Authentication:** Better Auth, Google OAuth, and JWT/JWKS
+- **Database:** MongoDB Atlas with the Better Auth MongoDB adapter
+- **Interface:** Tailwind CSS, DaisyUI, custom CSS, and Swiper
+- **Feedback:** Sonner toast notifications
+- **Images:** Protected imgbb upload route
+- **Deployment:** Vercel frontend and Render API
 
 ## Application routes
 
-| Route | Access | Description |
-| --- | --- | --- |
-| `/` | Public | Home, featured slides, newest books, and borrowing guide |
-| `/books` | Public | Search and filter the complete catalog |
-| `/books/[id]` | Signed in | View details and borrow an available book |
-| `/login` | Guest | Email/password and Google sign-in |
-| `/register` | Guest | Create a reader account |
-| `/add-book` | Signed in | Add a new book to the shelf |
-| `/my-books` | Signed in | Edit or remove books owned by the current reader |
-| `/my-borrows` | Signed in | Review and return active borrowed books |
-| `/profile` | Signed in | View and edit the current reader profile |
+### Public and guest routes
+
+- **`/`** — Home, featured slides, newest books, and borrowing guide
+- **`/books`** — Search and filter the complete catalog
+- **`/login`** — Email/password and Google sign-in
+- **`/register`** — Create a reader account
+
+### Signed-in routes
+
+- **`/books/[id]`** — View details and borrow an available book
+- **`/add-book`** — Add a new book to the shelf
+- **`/my-books`** — Edit or remove books owned by the current reader
+- **`/my-borrows`** — Review and return active borrowed books
+- **`/profile`** — View and edit the current reader profile
 
 Authenticated visitors who open `/login` or `/register` are redirected to their profile.
 
@@ -113,13 +114,11 @@ Add the client ID and secret to the matching local and Vercel environment variab
 
 ## Available commands
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the Next.js development server |
-| `npm run build` | Create an optimized production build |
-| `npm run start` | Run the production build locally |
-| `npm run lint` | Check the code with ESLint |
-| `npm run typecheck` | Validate TypeScript without emitting files |
+- **`npm run dev`** — Start the Next.js development server
+- **`npm run build`** — Create an optimized production build
+- **`npm run start`** — Run the production build locally
+- **`npm run lint`** — Check the code with ESLint
+- **`npm run typecheck`** — Validate TypeScript without emitting files
 
 Recommended verification before deployment:
 
